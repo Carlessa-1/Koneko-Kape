@@ -25,6 +25,10 @@ nav{
     align-items: center;
 }
 
+nav a {
+    font-family: okine_regular;
+}
+
 a{
     color: white;
     text-decoration: none;
