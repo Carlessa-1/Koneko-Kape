@@ -1,3 +1,4 @@
+/* setting up layout */
 body{
     margin: 0;
     padding: 0;
@@ -32,4 +33,24 @@ footer{
     color: white;
     text-align: center;
     padding: 1em;
+}
+
+h1{
+    font-family: cake;
+}
+
+/* font faces below */
+@font-face {
+    font-family: 'cake';
+    src: url('assets/fonts/Cakecafe.ttf')
+}
+
+@font-face {
+    font-family: 'okine_light';
+    src: url('assets/fonts/MADEOkineSansPERSONALUSE-Light.otf')
+}
+
+@font-face {
+    font-family: 'okine_regular';
+    src: url('assets/fonts/MADEOkineSansPERSONALUSE-Regular.otf')
 }
