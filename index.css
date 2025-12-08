@@ -1,0 +1,35 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+    "navbar"
+    "main"
+    "footer"
+}
+
+nav{
+    top: 0;
+    position: sticky;
+    grid-area: navbar;
+    background-color: #333;
+    color: white;
+    padding: 1em;
+}
+
+
+main{
+    grid-area: main;
+    padding: 1em;
+}
+
+footer{
+    grid-area: footer;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
