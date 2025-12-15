@@ -7,7 +7,6 @@ body{
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr auto;
     background-image: radial-gradient(#925932,#271508);
-    overflow-x: hidden;
     grid-template-areas:
     "navbar navbar"
     "main gallery"
