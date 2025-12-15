@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Café Quiz</title>
+
+  
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: okine_light;
+      background: #f5efe6;
+    }
+
+    .quiz {
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slide {
+      height: 100vh;
+      width: 100%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      position: absolute;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: 0.4s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    button {
+      background: white;
+      border: none;
+      border-radius: 18px;
+      padding: 18px;
+      font-size: 18px;
+      margin: 12px 0;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button:hover { transform: translateY(-3px); }
+
+    button:active {
+      transform: scale(0.97);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .result {
+      transition: background 0.4 ease;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  
+  <div class="quiz">
+
+    <section class="slide active">
+      <h1>Hot or cold?</h1>
+      <button onclick="choose('temp','hot')">🔥 Hot</button>
+      <button onclick="choose('temp','cold')">❄️ Cold</button>
+    </section>
+
+    <section class="slide">
+      <h1>Pick a vibe</h1>
+      <button onclick="choose('vibe','soft')">🌙 Soft</button>
+      <button onclick="choose('vibe','chaotic')">⚡ Chaotic</button>
+    </section>
+
+    <section class="slide">
+      <h1>Sweet or bitter?</h1>
+      <button onclick="choose('taste','sweet')">🍯 Sweet</button>
+      <button onclick="choose('taste','bitter')">☕ Bitter</button>
+    </section>
+
+    <section class="slide result">
+      <h1 id="finalDrink"></h1>
+      <p id="drinkDesc"></p>
+      <button onclick="restart()">Take again</button>
+    </section>
+
+  </div>
+
+ 
+  <script>
+  let index = 0;
+  const slides = document.querySelectorAll(".slide");
+
+  // to track the scores
+  let scores = {
+    matcha: 0,
+    choco: 0,
+    caramel: 0
+  };
+
+  function choose(type, value) {
+
+    // rules for scoring
+    if (type === "temp") {
+      if (value === "hot") scores.caramel += 1;
+      if (value === "cold") scores.choco += 1;
+    }
+
+    if (type === "vibe") {
+      if (value === "soft") scores.matcha += 1;
+      if (value === "chaotic") scores.choco += 1;
+    }
+
+    if (type === "taste") {
+      if (value === "sweet") scores.choco += 1;
+      if (value === "bitter") scores.matcha += 1;
+    }
+
+    // move to next slide
+    slides[index].classList.remove("active");
+    index++;
+    slides[index].classList.add("active");
+
+    if (slides[index].classList.contains("result")) {
+      showResult();
+    }
+  }
+
+ function showResult() {
+  const resultSlide = document.querySelector(".slide.result");
+
+  let drink = "";
+  let desc = "";
+
+  if (scores.matcha >= scores.choco && scores.matcha >= scores.caramel) {
+    drink = "Matcha 🍵";
+    desc = "Calm, grounded, and effortlessly aesthetic.";
+    resultSlide.style.background = "#7BAE7F"; 
+  }
+  else if (scores.choco >= scores.matcha && scores.choco >= scores.caramel) {
+    drink = "Choco Frappe 🍫";
+    desc = "Fun, bold, and full of energy.";
+    resultSlide.style.background = "#3B2416"; 
+  }
+  else {
+    drink = "Caramel Macchiato 🍮";
+    desc = "Warm, balanced, and comforting.";
+    resultSlide.style.background = "#C68C53"; 
+  }
+
+  document.getElementById("finalDrink").textContent = drink;
+  document.getElementById("drinkDesc").textContent = desc;
+}
+
+  function restart() {
+    index = 0;
+    scores = { matcha: 0, choco: 0, caramel: 0 };
+    slides.forEach(s => s.classList.remove("active"));
+    slides[0].classList.add("active");
+  }
+</script>
+</body>
+</html>
