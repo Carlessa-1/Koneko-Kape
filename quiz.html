@@ -119,6 +119,7 @@
       <h1 id="finalDrink"></h1>
       <p id="drinkDesc"></p>
       <button onclick="restart()">Take again</button>
+      <button onclick = "goToRecipes()">Back to Recipes</button>
     </section>
 
   </div>
@@ -203,6 +204,10 @@
     slides.forEach(s => s.classList.remove("active"));
     slides[0].classList.add("active");
   }
+
+   function goToRecipes(){
+    window.location.href = "recipes.html";
+   }
 </script>
 </body>
 </html>
