@@ -118,6 +118,7 @@
     <section class="slide result">
       <h1 id="finalDrink"></h1>
       <p id="drinkDesc"></p>
+      <img id="drinkImg" src="" alt="Your Drink" style="width:500px; height:500px; border-radius:15px; margin: auto">
       <button onclick="restart()">Take again</button>
       <button onclick = "goToRecipes()">Back to Recipes</button>
     </section>
@@ -181,21 +182,25 @@
   if (scores.matcha >= scores.choco && scores.matcha >= scores.caramel) {
     drink = "Matcha 🍵";
     desc = "Calm, grounded, and effortlessly aesthetic.";
+    imgSrc = "assets/images/matcha.png";
     resultSlide.style.background = "#7BAE7F"; 
   }
   else if (scores.choco >= scores.matcha && scores.choco >= scores.caramel) {
     drink = "Choco Frappe 🍫";
     desc = "Fun, bold, and full of energy.";
+    imgSrc = "assets/images/frappee.png";
     resultSlide.style.background = "#3B2416"; 
   }
   else {
     drink = "Caramel Macchiato 🍮";
     desc = "Warm, balanced, and comforting.";
+    imgSrc = "assets/images/caramel.png";
     resultSlide.style.background = "#C68C53"; 
   }
 
   document.getElementById("finalDrink").textContent = drink;
   document.getElementById("drinkDesc").textContent = desc;
+  document.getElementById("drinkImg").src = imgSrc;
 }
 
   function restart() {
