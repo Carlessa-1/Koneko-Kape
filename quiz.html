@@ -97,6 +97,7 @@
     <section class="slide">
       <h1>Pick a Vibe</h1>
       <button onclick="choose('vibe','soft')">🌙 Soft</button>
+      <button onclick="choose('vibe','balanced')">☯️ Balanced</button>
       <button onclick="choose('vibe','chaotic')">⚡ Chaotic</button>
     </section>
 
@@ -105,6 +106,14 @@
       <button onclick="choose('taste','sweet')">🍯 Sweet</button>
       <button onclick="choose('taste','bitter')">☕ Bitter</button>
       <button onclick="choose('taste','bittersweet')">☕🍯 BitterSweet</button>
+    </section>
+
+    <section class ="slide">
+      <h1>Energy Level?</h1>
+      <button onclick ="choose('energy', 'low')" > Low </button>
+      <button onclick ="choose('energy', 'medium')" > Medium </button>
+      <button onclick ="choose('energy', 'high')" > High </button>
+
     </section>
 
     <section class="slide result">
@@ -131,19 +140,26 @@
 
     // rules for scoring
     if (type === "temp") {
-      if (value === "hot") scores.caramel += 1;
-      if (value === "cold") scores.choco += 1;
+      if (value === "hot") scores.caramel += 2;
+      if (value === "cold") scores.choco += 2;
     }
 
     if (type === "vibe") {
-      if (value === "soft") scores.matcha += 1;
-      if (value === "chaotic") scores.choco += 1;
+      if (value === "soft") scores.matcha += 2;
+      if (value === "chaotic") scores.choco += 2;
+      if (value === "balanced") scores.caramel += 2;
     }
 
     if (type === "taste") {
-      if (value === "sweet") scores.choco += 1;
-      if (value === "bitter") scores.matcha += 1;
-      if(value === "bittersweet") scores.caramel += 1;
+      if (value === "sweet") scores.choco += 2;
+      if (value === "bitter") scores.matcha += 2;
+      if(value === "bittersweet") scores.caramel += 2;
+    }
+
+    if (type === "energy"){
+      if(value === "low") scores.matcha += 1;
+      if(value === "medium") scores.caramel += 1;
+      if(value === "high") scores.choco += 1;
     }
 
     // move to next slide
