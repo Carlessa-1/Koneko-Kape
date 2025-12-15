@@ -6,6 +6,7 @@ body{
     min-height: 100vh;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
+    background-image: radial-gradient(#925932,#271508);
     grid-template-areas:
     "navbar navbar"
     "main gallery"
@@ -23,6 +24,7 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-image: radial-gradient(#a66e3f,#71491e);
 }
 
 nav a {
@@ -44,17 +46,23 @@ main{
 main, h1{
     font-family: league spartan;
     font-size: 2.5em;
+    color: white;
+}
+
+footer {
+    font-family: league spartan;
+    font-size: 2.5em;
 }
 
 div#imgs {
     grid-area: gallery;
-    background-color: #f4f4f4;
+    background-color: transparent;
     padding: 1em;
 }
 
 footer{
     grid-area: footer;
-    background-color: #333;
+    background-image: radial-gradient(#a66e3f,#71491e);
     color: white;
     text-align: center;
     padding: 1fr;
