@@ -37,6 +37,9 @@ a{
     margin-right: 1em;
 }
 
+.links img {
+    filter: brightness(0) invert(1); /* make images white */
+}
 
 main{
     grid-area: main;
