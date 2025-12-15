@@ -32,8 +32,14 @@
         <h1>carousel here</h1>
     </div>
     <footer>
-        <p>&copy; 2024 My Website</p>
-        <!-- can u copy sir roys code for our footer -->
+        <p class="copyright">
+  &copy; <span id="year"></span> Carlessa Castaneda And John Ley Luis. All rights reserved.
+</p>
+
+<script>
+  // Auto-set current year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
     </footer>
 </body>
 </html>
