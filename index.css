@@ -1,6 +1,4 @@
-   /* ===============================
-   Reset & Layout
-================================= */
+   /* Reset & Layout*/
 * {
     margin: 0;
     padding: 0;
@@ -21,9 +19,7 @@ body {
     color: #fff;
 }
 
-/* ===============================
-   NAVBAR
-================================= */
+/* NAVBAR */
 nav {
     grid-area: navbar;
     display: flex;
@@ -68,9 +64,7 @@ nav a img {
     margin-right: 0.4em;
 }
 
-/* ===============================
-   MAIN
-================================= */
+/* MAIN*/
 main {
     grid-area: main;
     padding: 2em 2em;
@@ -94,9 +88,7 @@ main p {
     line-height: 1.6em;
 }
 
-/* ===============================
-   FOOTER
-================================= */
+/* FOOTER */
 footer {
     grid-area: footer;
     padding: 2em;
@@ -130,9 +122,7 @@ footer p {
     color: #ffd699;
 }
 
-/* ===============================
-   Fonts
-================================= */
+/* Fonts  */
 @font-face {
     font-family: 'cake';
     src: url('assets/fonts/Cakecafe.ttf');
@@ -148,9 +138,7 @@ footer p {
     src: url('assets/fonts/MADEOkineSansPERSONALUSE-Regular.otf');
 }
 
-/* ===============================
-   Responsive
-================================= */
+/*  Responsive*/
 @media screen and (max-width: 1024px){
     body {
         grid-template-columns: 1fr;
