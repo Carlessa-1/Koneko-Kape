@@ -6,9 +6,88 @@
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
     <title>Koneko Kape!</title>
+      <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+  />
+
+      <style>
+/* wrapper clips only slides */
+.swiper-container-wrapper {
+  overflow: hidden; /* clip clones */
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* keep swiper itself visible so arrows/pagination are outside */
+.swiper {
+  width: 100%;
+  padding: 40px 0;
+  overflow: visible;  /* allow arrows/dots to show */
+}
+
+/* slides, images, drink names, arrows remain the same */
+.swiper-slide { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.swiper-slide-active {
+  transform: scale(1.05);
+}
+
+.swiper-slide img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  border-radius: 20px;
+}
+.swiper-pagination {
+    color: #fff;
+}
+
+.drink-name {
+  margin-top: 10px;
+  font-family: 'League Spartan', sans-serif;
+  color: #fff;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+/* arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  top: 50%;
+    transform: translateY(-50%);
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+#imgs {
+  grid-area: gallery;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  </style>
 </head>
 <body>
     <nav>
@@ -28,9 +107,36 @@
         <p style="font-family: okine_light">Welcome to Koneko Kape! The cutest cafe on the internet. </p>
        
     </main>
-    <div id="imgs">
-        <h1>carousel here</h1>
+
+ <div id="imgs">
+  <div class="swiper-container-wrapper">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="assets/images/caramel.png" alt="Caramel">
+          <p class="drink-name">Caramel Machiatto</p>
+        </div>
+        <div class="swiper-slide">
+          <img src="assets/images/matcha.png" alt="Matcha">
+          <p class="drink-name">Matcha</p>
+        </div>
+        <div class="swiper-slide">
+          <img src="assets/images/frappee.png" alt="Frappe">
+          <p class="drink-name">Chocolate Frappe</p>
+        </div>
+      </div>
+
+      <!-- Optional arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+
+      <!-- Optional pagination -->
+      <div class="swiper-pagination"></div>
     </div>
+  </div>
+</div>
+
+
     <footer>
         <p class="copyright">
   &copy; <span id="year"></span> Carlessa Castaneda And John Ley Luis. All rights reserved.
@@ -40,6 +146,41 @@
   // Auto-set current year
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: 3,
+  spaceBetween: 30,
+  centeredSlides: true,
+  loop: true,
+
+
+  coverflowEffect: {
+    rotate: 0,
+    stretch: -30,
+    depth: 120,
+    modifier: 1,
+    slideShadows: false,
+  },
+
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+
+  </script>
     </footer>
 </body>
 </html>

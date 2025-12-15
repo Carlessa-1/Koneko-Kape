@@ -4,9 +4,10 @@ body{
     padding: 0;
     display: grid;
     min-height: 100vh;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr auto;
     background-image: radial-gradient(#925932,#271508);
+    overflow-x: hidden;
     grid-template-areas:
     "navbar navbar"
     "main gallery"
@@ -68,7 +69,6 @@ footer{
     padding: 1fr;
     font-size: 2em;
 }
-
 
 
 /* font faces below */
