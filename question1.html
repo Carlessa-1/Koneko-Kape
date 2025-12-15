@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
   <title>Café Quiz</title>
 
-  
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="recipes.css">
+        <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <!-- Official Font Awesome CDN -->
+
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+     <title>Café Quiz</title>   
   <style>
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: okine_light;
-      background: #f5efe6;
+      background: linear-gradient(to right, #b07a4f, #5c3317);
     }
 
     .quiz {
@@ -39,23 +49,32 @@
     }
 
     button {
-      background: white;
+      font-family: "League Spartan", sans-serif; 
+      background:  #ffd699;
       border: none;
-      border-radius: 18px;
-      padding: 18px;
-      font-size: 18px;
-      margin: 12px 0;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-size: 16px;
+      width: 80%;
+      max-width: 320px;
+      margin: 10px auto;
       cursor: pointer;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
 
-    button:hover { transform: translateY(-3px); }
+   box-shadow:
+       0 6px 18px rgba(0, 0, 0, 0.18),
+       inset 0 1px 0 rgba(255, 255, 255, 0.2);
 
-    button:active {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+   button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+   button:active {
       transform: scale(0.97);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
+}
 
     .result {
       transition: background 0.4 ease;
@@ -70,21 +89,22 @@
   <div class="quiz">
 
     <section class="slide active">
-      <h1>Hot or cold?</h1>
+      <h1>Hot or Cold?</h1>
       <button onclick="choose('temp','hot')">🔥 Hot</button>
       <button onclick="choose('temp','cold')">❄️ Cold</button>
     </section>
 
     <section class="slide">
-      <h1>Pick a vibe</h1>
+      <h1>Pick a Vibe</h1>
       <button onclick="choose('vibe','soft')">🌙 Soft</button>
       <button onclick="choose('vibe','chaotic')">⚡ Chaotic</button>
     </section>
 
     <section class="slide">
-      <h1>Sweet or bitter?</h1>
+      <h1>Taste Preference?</h1>
       <button onclick="choose('taste','sweet')">🍯 Sweet</button>
       <button onclick="choose('taste','bitter')">☕ Bitter</button>
+      <button onclick="choose('taste','bittersweet')">☕🍯 BitterSweet</button>
     </section>
 
     <section class="slide result">
@@ -123,6 +143,7 @@
     if (type === "taste") {
       if (value === "sweet") scores.choco += 1;
       if (value === "bitter") scores.matcha += 1;
+      if(value === "bittersweet") scores.caramel += 1;
     }
 
     // move to next slide
