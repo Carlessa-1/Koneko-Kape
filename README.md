@@ -35,7 +35,20 @@ Below the references, the page transitions into a cat-themed image carousel,, si
 ## 💻 **How JavaScript Will Be Used** 
 JavaScript will be used throughout the Koneko Kape website to enhance user interactivity and visual appeal. It will control image carousels on both the Home and Reference & Gallery pages, allowing manual transitions using navigation arrows. In the Recipe subpages, JavaScript powers the interactive minigame, enabling step-by-step click actions, progress tracking, and animated success pop-ups. On the Contact Page, JavaScript validates the form by checking for empty fields and ensuring valid email formatting before submission. It also triggers a custom pop-up message that thanks users for reaching out. 
 
+--- 
 
+## Quarter 3 Patch Notes
+
+### Finalized Logo and Favicon: 
+- insert img here lel
+
+### Description:
+
+### Features:
+
+### Extra Details:???
+
+### HUHs
 
 
 
