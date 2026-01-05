@@ -48,7 +48,7 @@ JavaScript will be used throughout the Koneko Kape website to enhance user inter
 
 ### Extra Details:???
 
-### HUHs
+### Definition of Done:
 
 
 
