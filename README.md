@@ -39,7 +39,7 @@ JavaScript will be used throughout the Koneko Kape website to enhance user inter
 
 ## Expanded Description for Koneko Kape
 
-### Koneko Kape’s warm café atmosphere will also serve as a creative space for coffee lovers to upload their own  drink recipes, allowing others to try them out!
+### Koneko Kape’s warm cafe atmosphere will also serve as a creative space for coffee lovers to upload their own  drink recipes, allowing others to try them out!
 
 -----------------------------------------------
 
