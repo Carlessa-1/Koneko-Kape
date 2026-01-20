@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #4b2e1f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+  }
+
+  .game {
+    width: 900px;
+    height: 500px;
+    background: #7a4a2e;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    text-align: center;
+    margin: 0;
+    letter-spacing: 2px;
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+  }
+
+  .progress {
+    flex: 1;
+    height: 12px;
+    background: #3a2216;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #8fd18f;
+    transition: width 0.3s;
+  }
+
+  .content {
+    display: flex;
+    height: 380px;
+    gap: 20px;
+  }
+
+  .instructions {
+    width: 35%;
+    background: #6a3f27;
+    border-radius: 15px;
+    padding: 15px;
+  }
+
+  .step {
+    display: flex;
+
+    gap: 10px;
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+
+  .box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid white;
+    border-radius: 4px;
+
+  }
+
+  .step.done .box {
+    background: #8fd18f;
+  }
+
+  .tools {
+    width: 20%;
+    background: #5a341f;
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tool {
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: grab;
+    font-weight: bold;
+    user-select: none;
+  }
+
+  .sifter { background: #c9b18c; color: #333; }
+  .water { background: #4aa3df; }
+  .whisk { background: #e0c08d; color: #333; }
+  .milk  { background: #f5deb3; color: #333; }
+
+  .work {
+    flex: 1;
+    background: #5c351f;
+    border-radius: 15px;
+    position: relative;
+  }
+
+  .bowl {
+    width: 220px;
+    height: 140px;
+    background: #eee;
+    border-radius: 0 0 110px 110px;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+  }
+
+  .liquid {
+    width: 100%;
+    height: 0%;
+    background: #6fa86f;
+    position: absolute;
+    bottom: 0;
+    transition: height 0.4s;
+  }
+
+  .hint {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.85;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="game">
+  <h1>Drink Maker</h1>
+
+  <div class="status">
+    <strong>Status:</strong>
+    <div class="progress">
+      <div class="progress-fill" id="progress"></div>
+    </div>
+    <span id="percent">0%</span>
+  </div>
+
+  <div class="content">
+
+    <div class="instructions">
+      <div class="step" id="step0"><div class="box"></div>Sift the matcha into a mug or a small bowl to avoid any lumps.</div>
+      <div class="step" id="step1"><div class="box"></div>Pour in the 2 oz. of hot water.</div>
+      <div class="step" id="step2"><div class="box"></div>  Using a matcha whisk or a small regular whisk, whisk briskly from side to side until the matcha is fully dispersed and there is a foamy layer on top.</div>
+      <div class="step" id="step3"><div class="box"></div>  Add in the remaining 6 oz. of hot water or steamed milk and whisk again until foamy. Sweeten to taste with maple syrup, honey, or your preferred sweetener, if desired.</div>
+    </div>
+
+    <div class="tools">
+      <div class="tool sifter" draggable="true" data-tool="sifter">Sifter</div>
+      <div class="tool water" draggable="true" data-tool="water">Hot Water</div>
+      <div class="tool whisk" draggable="true" data-tool="whisk">Whisk</div>
+      <div class="tool milk" draggable="true" data-tool="milk">Milk</div>
+    </div>
+
+    <div class="work">
+      <div class="bowl" id="bowl">
+        <div class="liquid" id="liquid"></div>
+      </div>
+      <div class="hint" id="hint">Drag the correct item into the bowl</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const steps = ["sifter", "water", "whisk", "milk"];
+  let currentStep = 0;
+
+  const liquid = document.getElementById("liquid");
+  const progress = document.getElementById("progress");
+  const percent = document.getElementById("percent");
+  const hint = document.getElementById("hint");
+  const bowl = document.getElementById("bowl");
+
+  document.querySelectorAll(".tool").forEach(tool => {
+    tool.addEventListener("dragstart", e => {
+      e.dataTransfer.setData("tool", tool.dataset.tool);
+    });
+  });
+
+  bowl.addEventListener("dragover", e => {
+    e.preventDefault();
+  });
+
+  bowl.addEventListener("drop", e => {
+    e.preventDefault();
+    const droppedTool = e.dataTransfer.getData("tool");
+
+    if (droppedTool !== steps[currentStep]) {
+      hint.textContent = "❌ Wrong step!";
+      return;
+    }
+
+    document.getElementById("step" + currentStep).classList.add("done");
+    currentStep++;
+
+    liquid.style.height = (currentStep * 25) + "%";
+
+    const progressValue = (currentStep / steps.length) * 100;
+    progress.style.width = progressValue + "%";
+    percent.textContent = Math.floor(progressValue) + "%";
+
+    hint.textContent =
+      currentStep === steps.length
+        ? "🍵 Matcha Complete!"
+        : "✔ Step completed!";
+  });
+</script>
+
+</body>
+</html>
