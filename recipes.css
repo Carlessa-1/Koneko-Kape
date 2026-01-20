@@ -21,9 +21,7 @@ body {
     color: #fff;
 }
 
-/* ============================
-   NAVBAR
-============================ */
+/* nav */
 nav {
     grid-area: navbar;
     display: flex;
@@ -70,9 +68,7 @@ nav a img {
     margin-right: 0.4em;
 }
 
-/* ============================
-   MAIN CONTENT
-============================ */
+/* main */
 main {
     grid-area: main;
     padding: 2em 2em;
@@ -95,9 +91,7 @@ main p {
     line-height: 1.6em;
 }
 
-/* ============================
-   FOOTER
-============================ */
+/*footer stuff*/
 footer {
     grid-area: footer;
     padding: 2em;
@@ -131,9 +125,7 @@ footer p {
     color: #ffd699;
 }
 
-/* ============================
-   CARDS LAYOUT
-============================ */
+/* cardsss */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -142,9 +134,6 @@ footer p {
     justify-items: center;
 }
 
-/* ============================
-   CARD STYLE
-============================ */
 .card {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
@@ -188,11 +177,8 @@ footer p {
     line-height: 1.4em;
 }
 
-/* ============================
-   RESPONSIVE FIXES
-============================ */
 
-/* TABLET FIX */
+
 @media screen and (max-width: 1024px){
     body {
         grid-template-areas:
@@ -243,4 +229,20 @@ footer p {
         width: 130px;
         height: 130px;
     }
+}
+
+/* FONTS */
+@font-face {
+    font-family: 'cake';
+    src: url('assets/fonts/Cakecafe.ttf');
+}
+
+@font-face {
+    font-family: 'okine_light';
+    src: url('assets/fonts/MADEOkineSansPERSONALUSE-Light.otf');
+}
+
+@font-face {
+    font-family: 'okine_regular';
+    src: url('assets/fonts/MADEOkineSansPERSONALUSE-Regular.otf');
 }

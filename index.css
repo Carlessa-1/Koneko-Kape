@@ -1,4 +1,4 @@
-/* RESET & BASE LAYOUT */
+
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +13,7 @@ html, body {
     color: #fff;
 }
 
-/* GRID STRUCTURE */
+/* grid structuer */
 body {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -25,7 +25,7 @@ body {
     min-height: 100vh;
 }
 
-/* NAVBAR */
+/* navbar */
 nav {
     grid-area: navbar;
     display: flex;
@@ -75,7 +75,7 @@ nav a img {
     margin-right: 0.4em;
 }
 
-/* MAIN CONTENT */
+/* main */
 main {
     grid-area: main;
     padding: 2.5em;
@@ -98,7 +98,7 @@ main p {
     line-height: 1.7em;
 }
 
-/* FOOTER */
+/* FOOTER nd icons */
 footer {
     grid-area: footer;
     background: linear-gradient(to right, #b07a4f, #5c3317);
@@ -143,7 +143,7 @@ footer {
     src: url('assets/fonts/MADEOkineSansPERSONALUSE-Regular.otf');
 }
 
-/* RESPONSIVE TABLET */
+
 @media screen and (max-width: 1024px) {
     body {
         grid-template-columns: 1fr;
@@ -167,7 +167,7 @@ footer {
     }
 }
 
-/* RESPONSIVE MOBILE */
+/* mobile fix */
 @media screen and (max-width: 600px) {
     nav {
         padding: 0.8em 1.5em;
