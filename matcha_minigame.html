@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="matcha.css">
+        <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+
+<style>
+
+</style>
+</head>
+
+<body>
+
+<div class="game">
+  <h1>Make your own Matcha!</h1>
+
+  <div class="status">
+    <strong>Status:</strong>
+    <div class="progress">
+      <div class="progress-fill" id="progress"></div>
+    </div>
+    <span id="percent">0%</span>
+  </div>
+
+  <div class="content">
+
+    <div class="instructions">
+      <div class="step" id="step0"><div class="box"></div>Add 1-2 teaspoons of matcha powder into a a small mug or bowl.</div>
+      <div class="step" id="step1"><div class="box"></div>Sift the matcha to avoid any lumps.</div>
+      <div class="step" id="step2"><div class="box"></div>Pour in 2 oz of hot water.</div>
+      <div class="step" id="step3"><div class="box"></div>  Again whisk briskly from side to side until the matcha is fully dispersed and there is a foamy layer on top.</div>
+      <div class="step" id="step4"><div class="box"></div>  Add in more 6 oz. of hot water or steamed milk and whisk again until foamy.</div>
+    <p>Bonus: Try adding maple syrup, or honey for a sweeter drink. Enjoy your matcha!</p>
+    </div>
+
+    <div class="tools">
+      <div class="tool matcha" draggable="true" data-tool="matcha"><img src="assets\images\matcha-powder.png" alt="Matcha Powder" style="width: 200px; height: 200px;"></div>
+      <div class="tool sifter" draggable="true" data-tool="sifter"><img src="assets\images\whisk.png" alt="Sifter" style="width: 200px; height: 200px;"></div>
+      <div class="tool water" draggable="true" data-tool="water"><img src="assets/images/water.png" alt="Hot Water" style="width: 200px; height: 200px;"></div>
+      <div class="tool whisk" draggable="true" data-tool="whisk"><img src="assets/images/whisk-matcha.png" alt="Whisk" style="width: 200px; height: 200px;"></div>
+      <div class="tool milk" draggable="true" data-tool="milk"><img src="assets/images/milk.png" alt="Milk" style="width: 200px; height: 200px;"></div>
+    </div>
+
+    <div class="work">
+      <div class="bowl" id="bowl">
+        <div class="liquid" id="liquid"></div>
+      </div>
+      <div class="hint" id="hint">Drag the correct item into the bowl</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const steps = ["matcha", "sifter", "water", "whisk", "milk"];
+  let currentStep = 0;
+
+  const liquid = document.getElementById("liquid");
+  const progress = document.getElementById("progress");
+  const percent = document.getElementById("percent");
+  const hint = document.getElementById("hint");
+  const bowl = document.getElementById("bowl");
+
+  document.querySelectorAll(".tool").forEach(tool => {
+    tool.addEventListener("dragstart", e => {
+      e.dataTransfer.setData("tool", tool.dataset.tool);
+    });
+  });
+
+  bowl.addEventListener("dragover", e => {
+    e.preventDefault();
+  });
+
+  bowl.addEventListener("drop", e => {
+    e.preventDefault();
+    const droppedTool = e.dataTransfer.getData("tool");
+
+    if (droppedTool !== steps[currentStep]) {
+      hint.textContent = "❌ Wrong step!";
+      return;
+    }
+
+    document.getElementById("step" + currentStep).classList.add("done");
+    currentStep++;
+
+    liquid.style.height = (currentStep * 20) + "%";
+
+    const progressValue = (currentStep / steps.length) * 100;
+    progress.style.width = progressValue + "%";
+    percent.textContent = Math.floor(progressValue) + "%";
+
+    // Lock the used tool
+document.querySelector(`[data-tool="${droppedTool}"]`)
+  .classList.add("used");
+
+
+    hint.textContent =
+      currentStep === steps.length
+        ? "🍵 Matcha Complete!"
+        : "✔ Step completed!";
+  });
+</script>
+
+</body>
+</html>

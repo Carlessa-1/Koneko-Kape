@@ -1,0 +1,277 @@
+/* ============================
+   RESET & BASE
+============================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'League Spartan', sans-serif;
+}
+
+/* ============================
+   PAGE BACKGROUND
+============================ */
+body {
+  background: radial-gradient(circle at top left, #c29771, #5b2f1a);
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+/* ============================
+   GAME CONTAINER
+============================ */
+.game {
+  width: 940px;
+  height: 580px;
+  padding: 1.8em;
+  border-radius: 25px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(255,255,255,0.25);
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+/* ============================
+   TITLE
+============================ */
+h1 {
+  text-align: center;
+  font-size: 2.4em;
+  color: #fff3e0;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+  margin-bottom: 0.4em;
+  font-family: 'okine_light', sans-serif;
+}
+
+/* ============================
+   STATUS BAR
+============================ */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.status strong {
+  color: #ffe7c2;
+}
+
+.progress {
+  flex: 1;
+  height: 14px;
+  background: rgba(0,0,0,0.35);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #a8e6a1, #6bbf6b);
+  transition: width 0.3s ease;
+}
+
+#percent {
+  font-weight: 600;
+  color: #fff1dd;
+}
+
+/* ============================
+   MAIN CONTENT
+============================ */
+.content {
+  display: flex;
+  gap: 1.5em;
+  height: 420px;
+}
+
+/* ============================
+   INSTRUCTIONS PANEL
+============================ */
+.instructions {
+  width: 35%;
+  padding: 1.2em;
+  border-radius: 20px;
+
+  background: rgba(0,0,0,0.25);
+  box-shadow: inset 0 0 12px rgba(0,0,0,0.4);
+
+  overflow-y: auto;
+}
+
+.step {
+  display: flex;
+  gap: 0.7em;
+  margin-bottom: 1em;
+  font-size: 0.95em;
+  color: #ffe7c2;
+  line-height: 1.4em;
+}
+
+.box {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.step.done .box {
+  background: #a8e6a1;
+  border-color: #a8e6a1;
+}
+
+.instructions p {
+  margin-top: 1em;
+  font-size: 0.9em;
+  color: #fff1dd;
+  opacity: 0.85;
+}
+
+/* ============================
+   TOOLS PANEL
+============================ */
+.tools {
+  width: 22%;
+  padding: 1em;
+  border-radius: 20px;
+
+  background: rgba(0,0,0,0.25);
+  box-shadow: inset 0 0 12px rgba(0,0,0,0.4);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9em;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+.tools::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tools::-webkit-scrollbar-thumb {
+  background: #8fd18f;
+  border-radius: 10px;
+}
+
+.tools::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.3);
+}
+
+/* ============================
+   TOOL CARDS
+============================ */
+.tool {
+  width: 100%;
+  padding: 0.8em;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.25);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: grab;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tool:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+}
+
+.tool img {
+  max-width: 100%;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+/* Used / locked tool */
+.tool.used {
+  opacity: 0.4;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+/* ============================
+   WORK AREA
+============================ */
+.work {
+  flex: 1;
+  border-radius: 20px;
+  position: relative;
+
+  background: rgba(0,0,0,0.25);
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.45);
+}
+
+/* ============================
+   BOWL
+============================ */
+.bowl {
+  width: 240px;
+  height: 150px;
+  background: #f3f3f3;
+  border-radius: 0 0 120px 120px;
+
+  position: absolute;
+  bottom: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  overflow: hidden;
+  box-shadow: inset 0 -6px 10px rgba(0,0,0,0.35);
+}
+
+/* Liquid */
+.liquid {
+  width: 100%;
+  height: 0%;
+  position: absolute;
+  bottom: 0;
+
+  background: linear-gradient(to top, #5c9c5c, #8fd18f);
+  transition: height 0.4s ease;
+}
+
+/* ============================
+   HINT TEXT
+============================ */
+.hint {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.95em;
+  color: #fff1dd;
+  opacity: 0.9;
+}
+
+/* FONTS */
+@font-face {
+    font-family: 'cake';
+    src: url('assets/fonts/Cakecafe.ttf');
+}
+
+@font-face {
+    font-family: 'okine_light';
+    src: url('assets/fonts/MADEOkineSansPERSONALUSE-Light.otf');
+}
+
+@font-face {
+    font-family: 'okine_regular';
+    src: url('assets/fonts/MADEOkineSansPERSONALUSE-Regular.otf');
+}

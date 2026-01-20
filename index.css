@@ -1,22 +1,28 @@
-   /* Reset & Layout*/
+/* RESET & BASE LAYOUT */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    background: radial-gradient(circle at top left, #c29771, #5b2f1a);
+    background-attachment: fixed;
+    font-family: 'League Spartan', sans-serif;
+    color: #fff;
+}
+
+/* GRID STRUCTURE */
 body {
     display: grid;
-    min-height: 100vh;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
         "navbar navbar"
         "main gallery"
         "footer footer";
-    background: radial-gradient(circle at top left, #c29771, #5b2f1a);
-    font-family: 'League Spartan', sans-serif;
-    color: #fff;
+    min-height: 100vh;
 }
 
 /* NAVBAR */
@@ -25,38 +31,43 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5em 2em;
+    padding: 1em 2.5em;
     position: sticky;
     top: 0;
+    z-index: 10;
+
     background: linear-gradient(to right, #b07a4f, #5c3317);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
 }
 
 nav .logo img {
     height: 70px;
+    object-fit: contain;
 }
 
 nav .links {
     display: flex;
     align-items: center;
-    gap: 1.2em;
+    gap: 1.3em;
 }
 
 nav a {
-    color: #fff;
-    text-decoration: none;
     display: flex;
     align-items: center;
+    text-decoration: none;
+    color: #fff !important;
     font-weight: 600;
     font-family: 'okine_regular';
+
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
 nav a:hover {
-    transform: scale(1.05);
     color: #ffd699;
+    transform: scale(1.08);
 }
 
 nav a img {
@@ -64,65 +75,59 @@ nav a img {
     margin-right: 0.4em;
 }
 
-/* MAIN*/
+/* MAIN CONTENT */
 main {
     grid-area: main;
-    padding: 2em 2em;
+    padding: 2.5em;
     display: flex;
     flex-direction: column;
+    gap: 1.2em;
     justify-content: center;
-    gap: 1em;
 }
 
 main h1 {
-    font-family: 'League Spartan', sans-serif;
-    font-size: 3em;
+    font-size: 3.2em;
     color: #fff3e0;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 main p {
     font-family: 'okine_light';
-    font-size: 1.2em;
+    font-size: 1.25em;
     color: #ffe7c2;
-    line-height: 1.6em;
+    line-height: 1.7em;
 }
 
 /* FOOTER */
 footer {
     grid-area: footer;
-    padding: 2em;
-    text-align: center;
-    font-family: 'League Spartan', sans-serif;
-    font-size: 1em;
     background: linear-gradient(to right, #b07a4f, #5c3317);
-    box-shadow: 0 -5px 15px rgba(0,0,0,0.4);
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.4);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+
+    padding: 2em 1em;
+    text-align: center;
     color: #fff1dd;
-
-}
-
-footer p {
-    margin-top: 0.5em;
 }
 
 .social-icons {
-    margin-bottom: 0.5em;
-    font-size: 1.5em;
+    font-size: 1.6em;
+    margin-bottom: 0.8em;
     display: flex;
     justify-content: center;
     gap: 1em;
     color: #fff3e0;
+
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .social-icons i:hover {
-    transform: scale(1.2);
+    transform: scale(1.25);
     color: #ffd699;
 }
 
-/* Fonts  */
+/* FONTS */
 @font-face {
     font-family: 'cake';
     src: url('assets/fonts/Cakecafe.ttf');
@@ -138,8 +143,8 @@ footer p {
     src: url('assets/fonts/MADEOkineSansPERSONALUSE-Regular.otf');
 }
 
-/*  Responsive*/
-@media screen and (max-width: 1024px){
+/* RESPONSIVE TABLET */
+@media screen and (max-width: 1024px) {
     body {
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -149,26 +154,69 @@ footer p {
             "footer";
     }
 
-    #imgs {
-        padding: 1em;
+    main {
+        padding: 2em 1.5em;
     }
 
     main h1 {
-        font-size: 2.5em;
+        font-size: 2.7em;
+    }
+
+    #imgs {
+        padding: 1em;
     }
 }
 
-@media screen and (max-width: 600px){
+/* RESPONSIVE MOBILE */
+@media screen and (max-width: 600px) {
+    nav {
+        padding: 0.8em 1.5em;
+    }
+
+    nav .links {
+        gap: 0.7em;
+    }
+
+    nav a {
+        font-size: 0.9em;
+    }
+
+    main {
+        text-align: center;
+        padding: 1.5em 1em;
+    }
+
     main h1 {
         font-size: 2em;
     }
 
+    main p {
+        font-size: 1.1em;
+    }
+
     .swiper-slide img {
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
     }
 
     .drink-name {
         font-size: 1em;
     }
+
+    footer {
+        padding: 1.5em 1em;
+        font-size: 0.9em;
+    }
+
+    .social-icons {
+        font-size: 1.4em;
+        gap: 0.8em;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    footer {
+        margin-top: 10%;
+    }
+
 }
