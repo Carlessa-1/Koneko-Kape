@@ -244,6 +244,7 @@ footer {
         padding: 1.5em 1em;
         font-size: 0.9em;
         transform: translateY(50%);
+         margin-top: 50%; 
     }
 
     .social-icons {
