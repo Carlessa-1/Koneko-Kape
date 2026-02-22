@@ -179,11 +179,17 @@ footer {
 
     .swiper {
         padding: 40px 0 80px 0;
+           margin-bottom: 120%;
     }
 
     .swiper-slide img {
         width: 190px;
         height: 190px;
+    }
+        footer {
+        padding: 1.5em 1em;
+        font-size: 0.9em;
+        transform: translateY(50%);
     }
 
 }
