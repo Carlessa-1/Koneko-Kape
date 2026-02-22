@@ -110,6 +110,74 @@
     color: #ffd699;
     border: 1px solid rgba(255, 214, 153, 0.4);
 }
+
+@media (max-width: 768px) and (orientation: landscape) {
+
+  /* Reduce heading size */
+  h1 {
+      font-size: 1.4em;
+  }
+
+  /* Shrink the steps text */
+  .instructions {
+      font-size: 0.85em;
+  }
+
+  /* Shrink tool images */
+  .tools .tool img {
+      max-width: 120px;
+      height: auto;
+  }
+
+  /* Shrink bowl */
+  .bowl {
+      width: 120px;
+      height: 120px;
+  }
+
+  /* Shrink progress bar */
+  .progress {
+      height: 15px;
+  }
+
+  .percent {
+      font-size: 0.85em;
+  }
+
+  /* Shrink popup */
+  .popup-box {
+      padding: 1.5em 2em;
+      max-width: 300px;
+    }
+
+  .popup-box h2 {
+      font-size: 1.3em;
+  }
+
+  .popup-box p {
+      font-size: 0.9em;
+  }
+
+  /* Shrink hint */
+  .hint {
+      font-size: 0.8em;
+  }
+
+  /* Shrink step boxes slightly */
+  .step .box {
+      width: 0.8em;
+      height: 0.8em;
+  }
+
+  /* Reduce spacing slightly */
+  .tools {
+      gap: 0.5em;
+  }
+
+  .work {
+      gap: 0.5em;
+  }
+}
 </style>
 </head>
 
