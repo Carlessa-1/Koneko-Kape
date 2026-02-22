@@ -1,157 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="matcha.css">
+        <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
 
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #4b2e1f;
-    display: flex;
+
+
+/* popup overlay */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    z-index: 999;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    color: white;
-  }
+}
 
-  .game {
-    width: 900px;
-    height: 500px;
-    background: #7a4a2e;
-    border-radius: 20px;
-    padding: 20px;
-    box-sizing: border-box;
-  }
+.popup-overlay.show {
+    display: flex;
+}
 
-  h1 {
+.popup-box {
+    background: linear-gradient(135deg, #c29771, #5b2f1a);
+    border: 2px solid rgba(255, 214, 153, 0.4);
+    border-radius: 28px;
+    padding: 2.5em 3em;
     text-align: center;
-    margin: 0;
-    letter-spacing: 2px;
-  }
+    box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+    font-family: 'League Spartan', sans-serif;
+    color: #fff3e0;
+    max-width: 380px;
+    width: 90%;
+    animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
 
-  .status {
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.7); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.popup-box .emoji {
+    font-size: 3.5em;
+    margin-bottom: 0.2em;
+}
+
+.popup-box h2 {
+    font-size: 2em;
+    color: #ffd699;
+    margin-bottom: 0.3em;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.4);
+}
+
+.popup-box p {
+    font-size: 1.05em;
+    color: #ffe7c2;
+    margin-bottom: 1.5em;
+    line-height: 1.5;
+}
+
+.popup-buttons {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 15px 0;
-  }
+    gap: 1em;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-  .progress {
-    flex: 1;
-    height: 12px;
-    background: #3a2216;
-    border-radius: 10px;
-    overflow: hidden;
-  }
+.popup-btn {
+    padding: 0.7em 1.6em;
+    border: none;
+    border-radius: 12px;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-  .progress-fill {
-    width: 0%;
-    height: 100%;
-    background: #8fd18f;
-    transition: width 0.3s;
-  }
+.popup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
 
-  .content {
-    display: flex;
-    height: 380px;
-    gap: 20px;
-  }
+.btn-again {
+    background: linear-gradient(135deg, #d4956a, #b07a4f);
+    color: #fff3e0;
+}
 
-  .instructions {
-    width: 35%;
-    background: #6a3f27;
-    border-radius: 15px;
-    padding: 15px;
-  }
-
-  .step {
-    display: flex;
-
-    gap: 10px;
-    margin-bottom: 14px;
-    font-size: 14px;
-  }
-
-  .box {
-    width: 18px;
-    height: 18px;
-    border: 2px solid white;
-    border-radius: 4px;
-
-  }
-
-  .step.done .box {
-    background: #8fd18f;
-  }
-
-  .tools {
-    width: 20%;
-    background: #5a341f;
-    border-radius: 15px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .tool {
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-    cursor: grab;
-    font-weight: bold;
-    user-select: none;
-  }
-
-  .sifter { background: #c9b18c; color: #333; }
-  .water { background: #4aa3df; }
-  .whisk { background: #e0c08d; color: #333; }
-  .milk  { background: #f5deb3; color: #333; }
-
-  .work {
-    flex: 1;
-    background: #5c351f;
-    border-radius: 15px;
-    position: relative;
-  }
-
-  .bowl {
-    width: 220px;
-    height: 140px;
-    background: #eee;
-    border-radius: 0 0 110px 110px;
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    overflow: hidden;
-  }
-
-  .liquid {
-    width: 100%;
-    height: 0%;
-    background: #6fa86f;
-    position: absolute;
-    bottom: 0;
-    transition: height 0.4s;
-  }
-
-  .hint {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    font-size: 14px;
-    opacity: 0.85;
-  }
+.btn-back {
+    background: rgba(255, 235, 210, 0.15);
+    color: #ffd699;
+    border: 1px solid rgba(255, 214, 153, 0.4);
+}
 </style>
 </head>
 
 <body>
 
+<!-- popup upon completion -->
+<div class="popup-overlay" id="popup">
+    <div class="popup-box">
+        <div class="emoji">🍵</div>
+        <h2>You're done!</h2>
+        <p>Your matcha is ready~ Great job following every step!</p>
+        <div class="popup-buttons">
+            <button class="popup-btn btn-again" onclick="playAgain()">🔄 Play Again</button>
+            <button class="popup-btn btn-back" onclick="window.location.href='recipes.html'">← Go Back</button>
+        </div>
+    </div>
+</div>
+
 <div class="game">
-  <h1>Drink Maker</h1>
+  <h1>Make your own Matcha!</h1>
 
   <div class="status">
     <strong>Status:</strong>
@@ -164,17 +131,20 @@
   <div class="content">
 
     <div class="instructions">
-      <div class="step" id="step0"><div class="box"></div>Sift the matcha into a mug or a small bowl to avoid any lumps.</div>
-      <div class="step" id="step1"><div class="box"></div>Pour in the 2 oz. of hot water.</div>
-      <div class="step" id="step2"><div class="box"></div>Using a matcha whisk or a small regular whisk, whisk briskly from side to side until the matcha is fully dispersed and there is a foamy layer on top.</div>
-      <div class="step" id="step3"><div class="box"></div>Add in the remaining 6 oz. of hot water or steamed milk and whisk again until foamy. Sweeten to taste with maple syrup, honey, or your preferred sweetener, if desired.</div>
+      <div class="step" id="step0"><div class="box"></div>Add 1-2 teaspoons of matcha powder into a small mug or bowl.</div>
+      <div class="step" id="step1"><div class="box"></div>Sift the matcha to avoid any lumps.</div>
+      <div class="step" id="step2"><div class="box"></div>Pour in 2 oz of hot water.</div>
+      <div class="step" id="step3"><div class="box"></div>Whisk briskly from side to side until the matcha is fully dispersed and there is a foamy layer on top.</div>
+      <div class="step" id="step4"><div class="box"></div>Add in 6 oz. of hot water or steamed milk and whisk again until foamy.</div>
+      <p>Bonus: Try adding maple syrup, or honey for a sweeter drink. Enjoy your matcha!</p>
     </div>
 
     <div class="tools">
-      <div class="tool sifter" draggable="true" data-tool="sifter">Sifter</div>
-      <div class="tool water" draggable="true" data-tool="water">Hot Water</div>
-      <div class="tool whisk" draggable="true" data-tool="whisk">Whisk</div>
-      <div class="tool milk" draggable="true" data-tool="milk">Milk</div>
+      <div class="tool matcha" draggable="true" data-tool="matcha"><img src="assets/images/matcha-powder.png" alt="Matcha Powder" style="width: 200px; height: 200px;"></div>
+      <div class="tool sifter" draggable="true" data-tool="sifter"><img src="assets/images/whisk.png" alt="Sifter" style="width: 200px; height: 200px;"></div>
+      <div class="tool water" draggable="true" data-tool="water"><img src="assets/images/water.png" alt="Hot Water" style="width: 200px; height: 200px;"></div>
+      <div class="tool whisk" draggable="true" data-tool="whisk"><img src="assets/images/whisk-matcha.png" alt="Whisk" style="width: 200px; height: 200px;"></div>
+      <div class="tool milk" draggable="true" data-tool="milk"><img src="assets/images/milk.png" alt="Milk" style="width: 200px; height: 200px;"></div>
     </div>
 
     <div class="work">
@@ -188,7 +158,7 @@
 </div>
 
 <script>
-  const steps = ["sifter", "water", "whisk", "milk"];
+  const steps = ["matcha", "sifter", "water", "whisk", "milk"];
   let currentStep = 0;
 
   const liquid = document.getElementById("liquid");
@@ -196,6 +166,7 @@
   const percent = document.getElementById("percent");
   const hint = document.getElementById("hint");
   const bowl = document.getElementById("bowl");
+  const popup = document.getElementById("popup");
 
   document.querySelectorAll(".tool").forEach(tool => {
     tool.addEventListener("dragstart", e => {
@@ -212,24 +183,49 @@
     const droppedTool = e.dataTransfer.getData("tool");
 
     if (droppedTool !== steps[currentStep]) {
-      hint.textContent = "❌ Wrong step!";
+      hint.textContent = "❌ Wrong step! Try again.";
       return;
     }
 
     document.getElementById("step" + currentStep).classList.add("done");
     currentStep++;
 
-    liquid.style.height = (currentStep * 25) + "%";
+    liquid.style.height = (currentStep * 20) + "%";
 
     const progressValue = (currentStep / steps.length) * 100;
     progress.style.width = progressValue + "%";
     percent.textContent = Math.floor(progressValue) + "%";
 
-    hint.textContent =
-      currentStep === steps.length
-        ? "🍵 Matcha Complete!"
-        : "✔ Step completed!";
+    document.querySelector(`[data-tool="${droppedTool}"]`).classList.add("used");
+
+    if (currentStep === steps.length) {
+      hint.textContent = "🍵 Matcha Complete!";
+      // Small delay so the last step visually registers before popup appears
+      setTimeout(() => {
+        popup.classList.add("show");
+      }, 600);
+    } else {
+      hint.textContent = "✔ Step completed!";
+    }
   });
+
+  function playAgain() {
+    // Reset state
+    currentStep = 0;
+    liquid.style.height = "0%";
+    progress.style.width = "0%";
+    percent.textContent = "0%";
+    hint.textContent = "Drag the correct item into the bowl";
+
+    // Reset steps
+    document.querySelectorAll(".step").forEach(s => s.classList.remove("done"));
+
+    // Unlock tools
+    document.querySelectorAll(".tool").forEach(t => t.classList.remove("used"));
+
+    // Hide popup
+    popup.classList.remove("show");
+  }
 </script>
 
 </body>
