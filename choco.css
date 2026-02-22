@@ -196,7 +196,7 @@ h1 {
     width: 250px;   /* size of the bowl */
     height: 300px;
     position: relative;
-    background: white;
+    background: linear-gradient(to top, #bbb8c9, rgb(255, 255, 255));
 
     /* Mask applied */
     -webkit-mask: url(#blender-mask) no-repeat;
