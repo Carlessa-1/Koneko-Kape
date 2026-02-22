@@ -152,7 +152,7 @@ footer {
 
     body {
         grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr auto;
+        grid-template-rows: auto 1fr auto auto;  /* ADD THIS */
         grid-template-areas:
             "navbar"
             "main"
