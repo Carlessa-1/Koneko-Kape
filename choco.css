@@ -193,15 +193,23 @@ h1 {
 
 /* bowl */
 .bowl {
-    width: 300px;
-    height: 350px;
+    width: 250px;   /* size of the bowl */
+    height: 300px;
     position: relative;
     background: white;
 
-    mask: url(#blender-mask);
-    -webkit-mask: url(#blender-mask);
+    /* Mask applied */
+    -webkit-mask: url(#blender-mask) no-repeat;
+    mask: url(#blender-mask) no-repeat;
+
+    /* Center horizontally, move down */
+    -webkit-mask-position: center 25%; /* 25% from top */
+    mask-position: center 75%;
+
 
     overflow: hidden;
+    margin: 0 auto;
+    margin-top: 10%;
 }
 
 /* matcha */
@@ -211,7 +219,7 @@ h1 {
   position: absolute;
   bottom: 0;
 
-  background: linear-gradient(to top, #5c9c5c, #8fd18f);
+  background: linear-gradient(to top, lch(25.75% 23.64 48.1), #914f30);
   transition: height 0.4s ease;
 }
 
