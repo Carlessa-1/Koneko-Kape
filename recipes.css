@@ -246,3 +246,24 @@ footer p {
     font-family: 'okine_regular';
     src: url('assets/fonts/MADEOkineSansPERSONALUSE-Regular.otf');
 }
+
+button {
+    background-color: #daad88;
+    color: #7e4024;
+    border: none;
+    padding: 0.8em 1.5em;
+    border-radius: 10px;
+    font-family: 'okine_regular';
+    font-size: 1em;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+    width: 40%;
+    transition: transform 0.2s ease, color 0.2s ease;
+    margin-left: auto;
+    margin-right: auto
+}
+
+
+button:hover {
+    transform: scale(1.05);
+    color: #8b3412;
