@@ -60,6 +60,24 @@ JavaScript will be used throughout the Koneko Kape website to enhance user inter
 - implementation of community recipe tab
 - all pages have been implemented and have animated elements
 
+-----------------------------------------------
+
+## 4th Quarter
+
+**1-3.** **Koneko Kape** is a cozy online café experience created for coffee lovers who want to savor the café atmosphere anytime, anywhere. The website features a menu of popular beverages and pastries, an online ordering option, and a recipe collection for those who wish to brew their own drinks at home. With its inviting design and easy navigation, visitors can explore, learn, and enjoy the comforting world of coffee in just a few clicks.
+More than just a digital café, Koneko Kape is a warm community space that celebrates the joy of connection over a good cup of coffee and **where every sip starts a story.**
+
+**4.**  They will love this project because it offers:
+   - an easy way to learn how to make new drinks in a fun way.
+   - aesthetic and cute art for their eyes to enjoy.
+   - offers a sense of satisfaction upon completing the minigames.
+
+**5.** This project features a sleek UI, with easy-to-navigate webpages, interactive ways to learn about drinks, and animated buttons. It is characterized by its clean and user-friendly layout, warm and inviting color sheme, well-written and engaging content, and high-quality pixel art that captures the vib of the place and the makes the coffee/food served appetizing. Although this project, as of right now,  does not feature other drinks, and pastries in our recipe list, and more importantly, an about us page.
+
+
+
+
+
 
 
 
