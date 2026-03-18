@@ -74,7 +74,7 @@ More than just a digital café, Koneko Kape is a warm community space that celeb
 
 **5.** This project features a sleek UI, with easy-to-navigate webpages, interactive ways to learn about drinks, and animated buttons. It is characterized by its clean and user-friendly layout, warm and inviting color sheme, well-written and engaging content, and high-quality pixel art that captures the vibe of the place and the makes the coffee/food served appetizing. Although this project, as of right now,  does not feature other drinks, and pastries in our recipe list, and more importantly, an about us page.
 
-**Submitted By John Ley and Carly Castaneda to SIR ROY**
+**Submitted By John Ley and Carly Castaneda on 03/18/2026 to SIR ROY in partial fulfillment of their requirements of CS3 of DOST PSHS-MC**
 
 
 
