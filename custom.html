@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Custom Recipes!</title>
+  <meta name="description" content="Café recipe submission page.">
+  <meta name="author" content="Carlessa Christiana Castaneda">
+
+  <link rel="stylesheet" href="custom.css">
+  <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Slackey&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav>
+            <div class="logo">
+                <img src="assets/images/logo-horizontal.png" alt="Logo" height="75px">
+            </div>
+            <div class="links">
+                <a href="index.html">
+                <img src="assets/icons/home.png" alt="Home Icon" style="width:3vh; height: 3vh; margin-right:5px;">
+                    Home</a>
+                <a href="recipes.html">
+                    <img src="assets/icons/coffee.png" alt="Recipes Icon" style="width:3vh; height: 3vh; margin-right:5px;">
+                    Recipes</a>
+                 <a href="contact.html">
+                    <img src="assets/icons/phone.png" alt="Contact Icon" style="width:3vh; height: 3vh; margin-right:5px;">
+                    Contact</a> 
+                <!-- <a href="about.html">About us!</a> -->
+                 <a href="references.html">
+                    <img src="assets/icons/google-docs.png" alt="References Icon" style="width:3vh; height: 3vh; margin-right:5px;">
+                    References</a> 
+            
+            </div>
+        </nav>
+
+  <main>
+    <h1>Add a Recipe!</h1>
+
+    <form id="myForm">
+      <fieldset>
+        <legend>Recipe Details</legend>
+
+        <label>Recipe Name:
+          <input required type="text" id="title" placeholder="e.g. Brown Sugar Matcha Latte">
+        </label>
+        <br>
+
+        <label>Created by:
+          <input type="text" id="creator" placeholder="Your name">
+        </label>
+        <label style="display:flex; align-items:center; gap:8px; margin-top:6px;">
+          <input type="checkbox" id="anonCheck" style="width:auto; margin:0;">
+          Post anonymously
+        </label>
+        <br>
+
+        <label>Tags:</label>
+        <div id="tagCheckboxes" style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+          <label style="display:flex; align-items:center; gap:5px; font-weight:normal;">
+            <input type="checkbox" value="Sweet" style="width:auto; margin:0;"> Sweet
+          </label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:normal;">
+            <input type="checkbox" value="Bitter" style="width:auto; margin:0;"> Bitter
+          </label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:normal;">
+            <input type="checkbox" value="Bittersweet" style="width:auto; margin:0;"> Bittersweet
+          </label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:normal;">
+            <input type="checkbox" value="Hot" style="width:auto; margin:0;"> Hot
+          </label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:normal;">
+            <input type="checkbox" value="Cold" style="width:auto; margin:0;"> Cold
+          </label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:normal;">
+            <input type="checkbox" value="Matcha" style="width:auto; margin:0;"> Matcha
+          </label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:normal;">
+            <input type="checkbox" value="Coffee" style="width:auto; margin:0;"> Coffee
+          </label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:normal;">
+            <input type="checkbox" value="Fruity" style="width:auto; margin:0;"> Fruity
+          </label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:normal;">
+            <input type="checkbox" value="Creamy" style="width:auto; margin:0;"> Creamy
+          </label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:normal;">
+            <input type="checkbox" value="Blended" style="width:auto; margin:0;"> Blended
+          </label>
+        </div>
+
+        <label>Custom Tags:
+          <div style="display:flex; gap:8px; margin-top:4px;">
+            <input type="text" id="customTagInput" placeholder="e.g. Lavender, Oat Milk..." style="flex:1;">
+            <button type="button" onclick="addCustomTag()" style="width:auto; padding: 0.6rem 1rem;">+ Add</button>
+          </div>
+        </label>
+        <div id="customTagList" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;"></div>
+        <br>
+
+        <label>Recipe Photo:
+          <input type="file" id="cover" accept="image/*">
+        </label>
+        <br>
+
+        <button type="submit">Submit Recipe</button>
+      </fieldset>
+    </form>
+
+    <div id="recipeList"></div>
+  </main>
+
+
+        <footer>
+        <div class="social-icons">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+            <p class="copyright">
+    &copy; <span id="year"></span> Carly Castaneda And John Ley Luis. All rights reserved.
+    </p>
+
+    <script>
+      document.getElementById('yur').textContent = new Date().getFullYear();
+
+      const myForm = document.getElementById("myForm");
+      const recipeList = document.getElementById("recipeList");
+      const anonCheck = document.getElementById("anonCheck");
+      const creatorInput = document.getElementById("creator");
+
+      // disable creator input when anonymous is checked
+      anonCheck.addEventListener("change", () => {
+        creatorInput.disabled = anonCheck.checked;
+        if (anonCheck.checked) creatorInput.value = "";
+      });
+
+      // custom tags
+      let customTags = [];
+
+      function addCustomTag() {
+        const input = document.getElementById("customTagInput");
+        const raw = input.value.trim();
+        if (!raw) return;
+
+        // support comma-separated entries
+        const entries = raw.split(",").map(t => t.trim()).filter(t => t);
+        entries.forEach(tag => {
+          if (!customTags.includes(tag)) {
+            customTags.push(tag);
+            renderCustomTagPill(tag);
+          }
+        });
+        input.value = "";
+      }
+
+      function renderCustomTagPill(tag) {
+        const pill = document.createElement("span");
+        pill.style.cssText = `
+          display:inline-flex; align-items:center; gap:6px;
+          background:#ffd699; color:#5c3317;
+          border-radius:20px; padding:4px 12px;
+          font-size:0.85rem; font-family:'Lexend',sans-serif;
+        `;
+        pill.innerHTML = `${tag} <button type="button" onclick="removeCustomTag('${tag}', this)" style="
+          background:none; border:none; color:#5c3317; cursor:pointer;
+          font-size:1rem; padding:0; width:auto; margin:0; box-shadow:none;
+        ">&times;</button>`;
+        document.getElementById("customTagList").appendChild(pill);
+      }
+
+      function removeCustomTag(tag, btn) {
+        customTags = customTags.filter(t => t !== tag);
+        btn.parentElement.remove();
+      }
+
+      // allow pressing Enter to add custom tag
+      document.getElementById("customTagInput").addEventListener("keydown", e => {
+        if (e.key === "Enter") { e.preventDefault(); addCustomTag(); }
+      });
+
+      // form submit
+      myForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        if (!confirm("Submit this recipe?")) return;
+
+        const coverInput = document.getElementById("cover");
+        const file = coverInput.files[0];
+
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = () => saveRecipe(reader.result);
+          reader.readAsDataURL(file);
+        } else {
+          saveRecipe(null);
+        }
+      });
+
+      function getCheckedTags() {
+        return Array.from(document.querySelectorAll("#tagCheckboxes input[type=checkbox]:checked"))
+          .map(cb => cb.value);
+      }
+
+      function saveRecipe(imageData) {
+        const title = document.getElementById("title").value.trim();
+        const creator = anonCheck.checked ? "Anonymous" : (creatorInput.value.trim() || "Anonymous");
+        const tags = [...getCheckedTags(), ...customTags];
+
+        const data = {
+          id: Date.now(),
+          title,
+          creator,
+          tags,
+          cover: imageData
+        };
+
+        let recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+        recipes.push(data);
+        localStorage.setItem("recipes", JSON.stringify(recipes));
+
+        renderRecipes();
+
+        myForm.reset();
+        customTags = [];
+        document.getElementById("customTagList").innerHTML = "";
+        creatorInput.disabled = false;
+      }
+
+      function renderRecipes() {
+        recipeList.innerHTML = "";
+        const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+        recipes.forEach(r => recipeList.appendChild(createRecipeCard(r)));
+      }
+
+      function createRecipeCard(r) {
+        const card = document.createElement("div");
+        card.classList.add("movieCard");
+
+        const tagHTML = r.tags.length
+          ? r.tags.map(t => `<span style="
+              display:inline-block; background:#ffd699; color:#5c3317;
+              border-radius:20px; padding:3px 10px; font-size:0.78rem;
+              margin:2px; font-family:'Lexend',sans-serif;
+            ">${t}</span>`).join("")
+          : "<span style='font-size:0.8rem; color:#888;'>No tags</span>";
+
+        card.innerHTML = `
+          ${r.cover ? `<img src="${r.cover}" alt="${r.title}" style="width:100%; border-radius:8px; margin-bottom:8px;">` : ''}
+          <h3>${r.title}</h3>
+          <p style="font-size:0.85rem; color:#5c3317; margin:2px 0;">by ${r.creator}</p>
+          <div style="margin:8px 0;">${tagHTML}</div>
+          <button onclick="deleteRecipe(${r.id}, this)">Delete</button>
+        `;
+        return card;
+      }
+
+      function deleteRecipe(id, btn) {
+        const name = btn.parentElement.querySelector("h3").textContent;
+        if (!confirm(`Delete "${name}"?`)) return;
+
+        let recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+        recipes = recipes.filter(r => r.id !== id);
+        localStorage.setItem("recipes", JSON.stringify(recipes));
+        btn.parentElement.remove();
+      }
+
+      window.addEventListener("DOMContentLoaded", renderRecipes);
+    </script>
+    <script src="https://kit.fontawesome.com/cef26950db.js" crossorigin="anonymous"></script>
+  </footer>
+
+</body>
+</html>
