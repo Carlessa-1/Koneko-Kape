@@ -3,7 +3,7 @@
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="matcha.css">
+        <link rel="stylesheet" href="caramel.css">
         <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
         <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,85 +110,19 @@
     color: #ffd699;
     border: 1px solid rgba(255, 214, 153, 0.4);
 }
-
-@media (max-width: 768px) and (orientation: landscape) {
-
-  /* Reduce heading size */
-  h1 {
-      font-size: 1.4em;
-  }
-
-  /* Shrink the steps text */
-  .instructions {
-      font-size: 0.85em;
-  }
-
-  /* Shrink tool images */
-  .tools .tool img {
-      max-width: 120px;
-      height: auto;
-  }
-
-  /* Shrink bowl */
-  .bowl {
-      width: 120px;
-      height: 120px;
-  }
-
-  /* Shrink progress bar */
-  .progress {
-      height: 15px;
-  }
-
-  .percent {
-      font-size: 0.85em;
-  }
-
-  /* Shrink popup */
-  .popup-box {
-      padding: 1.5em 2em;
-      max-width: 300px;
-    }
-
-  .popup-box h2 {
-      font-size: 1.1em;
-  }
-
-  .popup-box p {
-      font-size: 1em;
-  }
-
-  /* Shrink hint */
-  .hint {
-      font-size: 1em;
-  }
-
-  /* Shrink step boxes slightly */
-  .step .box {
-      width: 1em;
-      height: 1em;
-  }
-
-  /* Reduce spacing slightly */
-  .tools {
-      gap: 1em;
-  }
-
-  .work {
-      gap: 1em;
-  }
-}
 </style>
 </head>
 
 <body>
+
+
 <canvas id="confetti-canvas"></canvas>
 <!-- popup upon completion -->
 <div class="popup-overlay" id="popup">
     <div class="popup-box">
-        <div class="emoji">🍵</div>
+        <div class="emoji">☕</div>
         <h2>You're done!</h2>
-        <p>Your matcha is ready~ Great job following every step!</p>
+        <p>Your caramel macchiato is ready~ Great job following every step!</p>
         <div class="popup-buttons">
             <button class="popup-btn btn-again" onclick="playAgain()">🔄 Play Again</button>
             <button class="popup-btn btn-back" onclick="window.location.href='recipes.html'">← Go Back</button>
@@ -197,7 +131,7 @@
 </div>
 
 <div class="game">
-  <h1>Make your own Matcha!</h1>
+  <h1>Make your own Caramel Macchiato!</h1>
 
   <div class="status">
     <strong>Status:</strong>
@@ -210,27 +144,27 @@
   <div class="content">
 
     <div class="instructions">
-      <div class="step" id="step0"><div class="box"></div>Add 1-2 teaspoons of matcha powder into a small mug or bowl.</div>
-      <div class="step" id="step1"><div class="box"></div>Sift the matcha to avoid any lumps.</div>
-      <div class="step" id="step2"><div class="box"></div>Pour in 2 oz of hot water.</div>
-      <div class="step" id="step3"><div class="box"></div>Whisk briskly from side to side until the matcha is fully dispersed and there is a foamy layer on top.</div>
-      <div class="step" id="step4"><div class="box"></div>Add in 6 oz. of hot water or steamed milk and whisk again until foamy.</div>
-      <p>Bonus: Try adding maple syrup, or honey for a sweeter drink. Enjoy your matcha!</p>
+      <div class="step" id="step0"><div class="box"></div>Pour 1–2 tbsp of vanilla syrup into your serving glass or cup.</div>
+      <div class="step" id="step1"><div class="box"></div>Steam 1-1 and 1/2 cups of milk (65–70°C) and pour gently over the syrup.</div>
+      <div class="step" id="step2"><div class="box"></div>Add 1–2 shots of espresso.</div>
+      <div class="step" id="step3"><div class="box"></div>Spoon a layer of milk foam on top. (optional)</div>
+      <div class="step" id="step4"><div class="box"></div>Drizzle caramel syrup over the foam and enjoy!</div>
+      <p>Bonus: Use whole milk or oat milk for creaminess!</p>
     </div>
 
     <div class="tools">
-      <div class="tool matcha" draggable="true" data-tool="matcha"><img src="assets/images/matcha-powder.png" alt="Matcha Powder" style="width: 200px; height: 200px;"></div>
-      <div class="tool sifter" draggable="true" data-tool="sifter"><img src="assets/images/whisk.png" alt="Sifter" style="width: 200px; height: 200px;"></div>
-      <div class="tool water" draggable="true" data-tool="water"><img src="assets/images/water.png" alt="Hot Water" style="width: 200px; height: 200px;"></div>
-      <div class="tool whisk" draggable="true" data-tool="whisk"><img src="assets/images/whisk-matcha.png" alt="Whisk" style="width: 200px; height: 200px;"></div>
-      <div class="tool milk" draggable="true" data-tool="milk"><img src="assets/images/milk.png" alt="Milk" style="width: 200px; height: 200px;"></div>
+      <div class="tool matcha" draggable="true" data-tool="matcha"><img src="assets/images/vanilla.png" alt="Matcha Powder" style="width: 200px; height: 200px;"></div>
+      <div class="tool sifter" draggable="true" data-tool="sifter"><img src="assets/images/milk.png" alt="Sifter" style="width: 200px; height: 200px;"></div>
+      <div class="tool water" draggable="true" data-tool="water"><img src="assets/images/beans.png" alt="Hot Water" style="width: 200px; height: 200px;"></div>
+      <div class="tool whisk" draggable="true" data-tool="whisk"><img src="assets/images/foam.png" alt="Whisk" style="width: 200px; height: 200px;"></div>
+      <div class="tool milk" draggable="true" data-tool="milk"><img src="assets/images/caramels.png" alt="Milk" style="width: 200px; height: 200px;"></div>
     </div>
 
     <div class="work">
       <div class="bowl" id="bowl">
         <div class="liquid" id="liquid"></div>
       </div>
-      <div class="hint" id="hint">Drag the correct item into the bowl</div>
+      <div class="hint" id="hint">Drag the correct item into the cup</div>
     </div>
 
   </div>
@@ -278,7 +212,7 @@
     document.querySelector(`[data-tool="${droppedTool}"]`).classList.add("used");
 
     if (currentStep === steps.length) {
-      hint.textContent = "🍵 Matcha Complete!";
+      hint.textContent = "☕ Caramel Macchiato Complete!";
       // Small delay so the last step visually registers before popup appears
       setTimeout(() => {
         confetti({
@@ -292,7 +226,6 @@
       hint.textContent = "✔ Step completed!";
     }
   });
-  
 
   function playAgain() {
     // Reset state

@@ -1,1 +1,441 @@
-contact us
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <title>Contact Us – Koneko Kape!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            background: radial-gradient(circle at top left, #c29771, #5b2f1a);
+            background-attachment: fixed;
+            font-family: 'League Spartan', sans-serif;
+            color: #fff;
+        }
+
+        body {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas:
+                "navbar"
+                "content"
+                "footer";
+            min-height: 100vh;
+        }
+
+        nav {
+            grid-area: navbar;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 2.5em;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: linear-gradient(to right, #b07a4f, #5c3317);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+
+        nav .logo img { height: 70px; object-fit: contain; }
+
+        nav .links {
+            display: flex;
+            align-items: center;
+            gap: 1.3em;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #fff !important;
+            font-weight: 600;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        nav a:hover { color: #ffd699; transform: scale(1.08); }
+
+        nav a img {
+            filter: brightness(0) invert(1);
+            margin-right: 0.4em;
+            width: 3vh; height: 3vh;
+        }
+
+        .contact-wrapper {
+            grid-area: content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3em 1.5em;
+        }
+
+        .contact-card {
+            background: rgba(255, 235, 210, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 220, 170, 0.25);
+            border-radius: 30px;
+            padding: 3em 3.5em;
+            max-width: 620px;
+            width: 100%;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+            animation: fadeUp 0.6s ease both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .contact-card h1 {
+            font-size: 2.6em;
+            color: #fff3e0;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+            margin-bottom: 0.2em;
+        }
+
+        .contact-card .subtitle {
+            color: #ffd699;
+            font-size: 1.1em;
+            margin-bottom: 2em;
+            opacity: 0.9;
+        }
+
+        .paw-divider {
+            display: flex;
+            align-items: center;
+            gap: 0.6em;
+            margin-bottom: 2em;
+        }
+
+        .paw-divider span { font-size: 1.3em; }
+
+        .paw-divider hr {
+            flex: 1;
+            border: none;
+            border-top: 1px solid rgba(255, 214, 153, 0.4);
+        }
+
+        .form-group {
+            margin-bottom: 1.4em;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4em;
+        }
+
+        label {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: #ffecd4;
+            letter-spacing: 0.04em;
+        }
+
+        input, textarea, select {
+            background: rgba(255, 240, 220, 0.1);
+            border: 1px solid rgba(255, 214, 153, 0.35);
+            border-radius: 12px;
+            padding: 0.8em 1em;
+            color: #fff3e0;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+            width: 100%;
+        }
+
+        input::placeholder, textarea::placeholder { color: rgba(255,235,210,0.45); }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #ffd699;
+            background: rgba(255, 240, 220, 0.18);
+            box-shadow: 0 0 0 3px rgba(255, 214, 153, 0.15);
+        }
+
+        select option { background: #5c3317; color: #fff3e0; }
+
+        textarea { resize: vertical; min-height: 130px; }
+
+        .send-btn {
+            margin-top: 0.5em;
+            width: 100%;
+            padding: 0.9em;
+            background: linear-gradient(135deg, #d4956a, #b07a4f);
+            border: none;
+            border-radius: 14px;
+            color: #fff3e0;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.15em;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+            background: linear-gradient(135deg, #e0a87a, #c28a5f);
+        }
+
+        .send-btn:active { transform: translateY(0); }
+
+        .success-msg {
+            display: none;
+            margin-top: 1.2em;
+            background: rgba(255, 214, 153, 0.15);
+            border: 1px solid #ffd699;
+            border-radius: 12px;
+            padding: 0.9em 1.2em;
+            color: #ffd699;
+            font-size: 1em;
+            text-align: center;
+            animation: fadeUp 0.4s ease both;
+        }
+
+        footer {
+            grid-area: footer;
+            background: linear-gradient(to right, #b07a4f, #5c3317);
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.4);
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            padding: 2em 1em;
+            text-align: center;
+            color: #fff1dd;
+        }
+
+        .social-icons {
+            font-size: 1.6em;
+            margin-bottom: 0.8em;
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+            color: #fff3e0;
+        }
+
+        .social-icons i { transition: transform 0.2s ease, color 0.2s ease; cursor: pointer; }
+        .social-icons i:hover { transform: scale(1.25); color: #ffd699; }
+
+       /* ============================= */
+/* TABLET RESPONSIVE (1024px)   */
+/* ============================= */
+@media screen and (max-width: 1024px){
+
+    nav {
+        padding: 0.5em 1.2em;
+    }
+
+    .contact-wrapper {
+        padding: 2em 1.5em;
+    }
+
+    .contact-card {
+        padding: 2.5em;
+        max-width: 90%;
+    }
+
+    .contact-card h1 {
+        font-size: 2.2em;
+    }
+}
+
+
+/* ============================= */
+/* MOBILE RESPONSIVE (600px)    */
+/* ============================= */
+@media screen and (max-width: 600px){
+
+    /* NAV STACK LIKE OTHER FILE */
+    nav {
+        flex-direction: column;
+        gap: 0.8em;
+        text-align: center;
+        padding: 1em;
+    }
+
+    nav .links {
+        justify-content: center;
+        gap: 0.8em;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        font-size: 0.9em;
+    }
+
+    /* CONTACT SECTION */
+    .contact-wrapper {
+        padding: 1.5em;
+    }
+
+    .contact-card {
+        padding: 1.8em 1.5em;
+        border-radius: 20px;
+    }
+
+    .contact-card h1 {
+        font-size: 1.9em;
+        text-align: center;
+    }
+
+    .contact-card .subtitle {
+        text-align: center;
+        font-size: 1em;
+    }
+
+    .paw-divider {
+        margin: 1.5em 0;
+    }
+
+    /* INPUTS */
+    input,
+    textarea,
+    select {
+        font-size: 0.95em;
+        padding: 0.7em 0.9em;
+    }
+
+    .send-btn {
+        font-size: 1em;
+        padding: 0.8em;
+    }
+
+    footer {
+        padding: 1.5em;
+    }
+
+    .social-icons {
+        font-size: 1.4em;
+        gap: 0.8em;
+    }
+}
+
+        @font-face { font-family: 'okine_light'; src: url('assets/fonts/MADEOkineSansPERSONALUSE-Light.otf'); }
+        @font-face { font-family: 'okine_regular'; src: url('assets/fonts/MADEOkineSansPERSONALUSE-Regular.otf'); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <img src="assets/images/logo-horizontal.png" alt="Logo">
+        </div>
+        <div class="links">
+            <a href="index.html">
+                <img src="assets/icons/home.png" alt="Home Icon">
+                Home
+            </a>
+            <a href="recipes.html">
+                <img src="assets/icons/coffee.png" alt="Recipes Icon">
+                Recipes
+            </a>
+            <a href="contact.html">
+                <img src="assets/icons/phone.png" alt="Contact Icon">
+                Contact
+            </a>
+            <a href="references.html">
+                    <img src="assets/icons/google-docs.png" alt="References Icon" style="width:3vh; height: 3vh; margin-right:5px;">
+                    References</a>
+        </div>
+    </nav>
+
+    <div class="contact-wrapper">
+        <div class="contact-card">
+
+            <h1>Contact Us 🐾</h1>
+            <p class="subtitle">Have a question, a suggestion, or just want to say hi? We'd love to hear from you!</p>
+
+            <div class="paw-divider">
+                <hr>
+                <span>🐱</span>
+                <hr>
+            </div>
+
+            <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="e.g. Sakura Chan" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject">
+                        <option value="" disabled selected>Choose a topic…</option>
+                        <option value="recipe">Recipe Question</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="collab">Collaboration</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us what's on your mind! ☕" required></textarea>
+                </div>
+
+                <button type="submit" class="send-btn">Send Message ✉️</button>
+
+                <div class="success-msg" id="successMsg">
+                    🐾 Message sent! We'll get back to you soon~
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+        <p class="copyright">
+            &copy; <span id="year"></span> Carly Castaneda And John Ley Luis. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/cef26950db.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        function handleSubmit(e) {
+            e.preventDefault();
+
+            const name    = document.getElementById('name').value.trim();
+            const email   = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+
+            document.getElementById('successMsg').style.display = 'block';
+            document.getElementById('contactForm').reset();
+
+            setTimeout(() => {
+                document.getElementById('successMsg').style.display = 'none';
+            }, 4000);
+        }
+    </script>
+
+</body>
+</html>

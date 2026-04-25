@@ -8,20 +8,9 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
 <style>
-  
-  /* confetti upon completion whahahaha */
-#confetti-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 998;
-    display: none;
-}
+
 
 /* popup overlay */
 .popup-overlay {
@@ -110,79 +99,11 @@
     color: #ffd699;
     border: 1px solid rgba(255, 214, 153, 0.4);
 }
-
-@media (max-width: 768px) and (orientation: landscape) {
-
-  /* Reduce heading size */
-  h1 {
-      font-size: 1.4em;
-  }
-
-  /* Shrink the steps text */
-  .instructions {
-      font-size: 0.85em;
-  }
-
-  /* Shrink tool images */
-  .tools .tool img {
-      max-width: 120px;
-      height: auto;
-  }
-
-  /* Shrink bowl */
-  .bowl {
-      width: 120px;
-      height: 120px;
-  }
-
-  /* Shrink progress bar */
-  .progress {
-      height: 15px;
-  }
-
-  .percent {
-      font-size: 0.85em;
-  }
-
-  /* Shrink popup */
-  .popup-box {
-      padding: 1.5em 2em;
-      max-width: 300px;
-    }
-
-  .popup-box h2 {
-      font-size: 1.1em;
-  }
-
-  .popup-box p {
-      font-size: 1em;
-  }
-
-  /* Shrink hint */
-  .hint {
-      font-size: 1em;
-  }
-
-  /* Shrink step boxes slightly */
-  .step .box {
-      width: 1em;
-      height: 1em;
-  }
-
-  /* Reduce spacing slightly */
-  .tools {
-      gap: 1em;
-  }
-
-  .work {
-      gap: 1em;
-  }
-}
 </style>
 </head>
 
 <body>
-<canvas id="confetti-canvas"></canvas>
+
 <!-- popup upon completion -->
 <div class="popup-overlay" id="popup">
     <div class="popup-box">
@@ -281,18 +202,12 @@
       hint.textContent = "🍵 Matcha Complete!";
       // Small delay so the last step visually registers before popup appears
       setTimeout(() => {
-        confetti({
-        particleCount: 150,
-        spread: 80,
-        origin: { y: 0.5 }
-        });
         popup.classList.add("show");
       }, 600);
     } else {
       hint.textContent = "✔ Step completed!";
     }
   });
-  
 
   function playAgain() {
     // Reset state

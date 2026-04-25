@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="userForm">
+  <input type="text" id="firstName" placeholder="First Name">
+  <input type="text" id="lastName" placeholder="Last Name">
+  <button type="submit">Create User</button>
+</form>
+
+<script>
+  document.querySelector('#userForm').addEventListener('submit', (e) => {
+
+    e.preventDefault();
+
+    let user = {
+      first: document.querySelector('#firstName').value,
+      last: document.querySelector('#lastName').value
+    };
+
+    let arr = []
+    arr.push(user);
+
+    let json = JSON.stringify(arr);
+    localStorage.setItem("users", json);
+    console.log("Success!", user);
+  });
+</script>
+    
+</body>
+</html>

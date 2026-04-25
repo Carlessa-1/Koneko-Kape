@@ -1,1 +1,307 @@
-references
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <title>References – Koneko Kape!</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .references-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3em 1.5em;
+            gap: 1.5em;
+        }
+
+        .references-wrapper h1 {
+            font-size: 2.8em;
+            color: #fff3e0;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+            margin-bottom: 0.2em;
+        }
+
+        .references-wrapper .subtitle {
+            color: #ffd699;
+            font-size: 1.1em;
+            margin-bottom: 1em;
+            opacity: 0.9;
+        }
+
+        .paw-divider {
+            display: flex;
+            align-items: center;
+            gap: 0.6em;
+            width: 100%;
+            max-width: 650px;
+            margin-bottom: 1em;
+        }
+
+        .paw-divider hr {
+            flex: 1;
+            border: none;
+            border-top: 1px solid rgba(255, 214, 153, 0.4);
+        }
+
+        .paw-divider span { font-size: 1.3em; }
+
+        .ref-card {
+            background: rgba(255, 235, 210, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 220, 170, 0.25);
+            border-radius: 20px;
+            padding: 1.5em 2em;
+            max-width: 650px;
+            width: 100%;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            display: flex;
+            align-items: center;
+            gap: 1.5em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            animation: fadeUp 0.5s ease both;
+        }
+
+        .ref-card:nth-child(1) { animation-delay: 0.1s; }
+        .ref-card:nth-child(2) { animation-delay: 0.2s; }
+        .ref-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .ref-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 22px 50px rgba(0,0,0,0.35);
+        }
+
+        .ref-emoji {
+            font-size: 2.5em;
+            flex-shrink: 0;
+        }
+
+        .ref-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3em;
+        }
+
+        .ref-info .ref-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #fff3e0;
+        }
+
+        .ref-info .ref-site {
+            font-size: 0.9em;
+            color: #ffd699;
+            opacity: 0.85;
+        }
+
+        .ref-info a {
+            font-size: 0.85em;
+            color: rgba(255, 220, 170, 0.6);
+            text-decoration: none;
+            word-break: break-all;
+            transition: color 0.2s ease;
+        }
+
+        .ref-info a:hover {
+            color: #ffd699;
+            text-decoration: underline;
+        }
+
+       /* ============================= */
+/* TABLET RESPONSIVE (1024px)   */
+/* ============================= */
+@media screen and (max-width: 1024px){
+
+    nav {
+        padding: 0.5em 1.2em;
+    }
+
+    .contact-wrapper {
+        padding: 2em 1.5em;
+    }
+
+    .contact-card {
+        padding: 2.5em;
+        max-width: 90%;
+    }
+
+    .contact-card h1 {
+        font-size: 2.2em;
+    }
+}
+
+
+/* ============================= */
+/* MOBILE RESPONSIVE (600px)    */
+/* ============================= */
+@media screen and (max-width: 600px){
+
+    /* NAV STACK LIKE OTHER FILE */
+    nav {
+        flex-direction: column;
+        gap: 0.8em;
+        text-align: center;
+        padding: 1em;
+    }
+
+    nav .links {
+        justify-content: center;
+        gap: 0.8em;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        font-size: 0.9em;
+    }
+
+    /* CONTACT SECTION */
+    .contact-wrapper {
+        padding: 1.5em;
+    }
+
+    .contact-card {
+        padding: 1.8em 1.5em;
+        border-radius: 20px;
+    }
+
+    .contact-card h1 {
+        font-size: 1.9em;
+        text-align: center;
+    }
+
+    .contact-card .subtitle {
+        text-align: center;
+        font-size: 1em;
+    }
+
+    .paw-divider {
+        margin: 1.5em 0;
+    }
+
+    /* INPUTS */
+    input,
+    textarea,
+    select {
+        font-size: 0.95em;
+        padding: 0.7em 0.9em;
+    }
+
+    .send-btn {
+        font-size: 1em;
+        padding: 0.8em;
+    }
+
+    footer {
+        padding: 1.5em;
+    }
+
+    .social-icons {
+        font-size: 1.4em;
+        gap: 0.8em;
+    }
+}
+
+        @font-face { font-family: 'okine_light'; src: url('assets/fonts/MADEOkineSansPERSONALUSE-Light.otf'); }
+        @font-face { font-family: 'okine_regular'; src: url('assets/fonts/MADEOkineSansPERSONALUSE-Regular.otf'); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <img src="assets/images/logo-horizontal.png" alt="Logo" height="75px">
+        </div>
+        <div class="links">
+            <a href="index.html">
+                <img src="assets/icons/home.png" alt="Home Icon" style="width:3vh; height: 3vh; margin-right:5px;">
+                Home</a>
+            <a href="recipes.html">
+                <img src="assets/icons/coffee.png" alt="Recipes Icon" style="width:3vh; height: 3vh; margin-right:5px;">
+                Recipes</a>
+            <a href="contact.html">
+                <img src="assets/icons/phone.png" alt="Contact Icon" style="width:3vh; height: 3vh; margin-right:5px;">
+                Contact</a>
+            <a href="references.html">
+                <img src="assets/icons/google-docs.png" alt="References Icon" style="width:3vh; height: 3vh; margin-right:5px;">
+                References</a>
+        </div>
+    </nav>
+
+    <div class="references-wrapper">
+
+        <h1>References 📚</h1>
+        <p class="subtitle">Here are the sources we used for our recipes!</p>
+
+        <div class="paw-divider">
+            <hr><span>🐱</span><hr>
+        </div>
+
+        <div class="ref-card">
+            <div class="ref-emoji"><img src="assets/images/matcha.png" alt="Matcha" style="width:70px; height:70px; object-fit:cover; border-radius:12px;"></div>
+            <div class="ref-info">
+                <span class="ref-title">Iced Matcha Latte – An Easy Recipe</span>
+                <span class="ref-site">A Cozy Kitchen</span>
+                <a href="https://www.acozykitchen.com/matcha-iced-latte" target="_blank">
+                    https://www.acozykitchen.com/matcha-iced-latte
+                </a>
+            </div>
+        </div>
+
+        <div class="ref-card">
+            <div class="ref-emoji"><img src="assets/images/caramel.png" alt="Caramel Macchiato" style="width:70px; height:70px; object-fit:cover; border-radius:12px;"></div>
+            <div class="ref-info">
+                <span class="ref-title">Iced Caramel Macchiato Recipe</span>
+                <span class="ref-site">The Cookie Rookie</span>
+                <a href="https://www.thecookierookie.com/iced-caramel-macchiato-recipe/" target="_blank">
+                    https://www.thecookierookie.com/iced-caramel-macchiato-recipe/
+                </a>
+            </div>
+        </div>
+
+        <div class="ref-card">
+            <div class="ref-emoji"><img src="assets/images/frappee.png" alt="Chocolate Frappe" style="width:70px; height:70px; object-fit:cover; border-radius:12px;"></div>
+            <div class="ref-info">
+                <span class="ref-title">Creamy Chocolate Frappe Recipe</span>
+                <span class="ref-site">Nestlé Goodnes PH</span>
+                <a href="https://www.nestlegoodnes.com/ph/recipes/creamy-chocolate-frappe" target="_blank">
+                    https://www.nestlegoodnes.com/ph/recipes/creamy-chocolate-frappe
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+        <p class="copyright">
+            &copy; <span id="year"></span> Carly Castaneda And John Ley Luis. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/cef26950db.js" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

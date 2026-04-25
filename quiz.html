@@ -88,32 +88,31 @@
   <div class="quiz">
 
     <section class="slide active">
-      <h1>Hot or Cold?</h1>
-      <button onclick="choose('temp','hot')">🔥 Hot</button>
-      <button onclick="choose('temp','cold')">❄️ Cold</button>
-    </section>
+  <h1>How do you take your drink?</h1>
+  <button onclick="choose('temp','hot')">🔥 Cozy & warm</button>
+  <button onclick="choose('temp','cold')">❄️ Iced & chilled</button>
+</section>
 
-    <section class="slide">
-      <h1>Pick a Vibe</h1>
-      <button onclick="choose('vibe','soft')">🌙 Soft</button>
-      <button onclick="choose('vibe','balanced')">☯️ Balanced</button>
-      <button onclick="choose('vibe','chaotic')">⚡ Chaotic</button>
-    </section>
+<section class="slide">
+  <h1>What's your current mood?</h1>
+  <button onclick="choose('vibe','soft')">🌙 Calm & quiet</button>
+  <button onclick="choose('vibe','balanced')">☯️ Steady & grounded</button>
+  <button onclick="choose('vibe','chaotic')">⚡ Loud & extra</button>
+</section>
 
-    <section class="slide">
-      <h1>Taste Preference?</h1>
-      <button onclick="choose('taste','sweet')">🍯 Sweet</button>
-      <button onclick="choose('taste','bitter')">☕ Bitter</button>
-      <button onclick="choose('taste','bittersweet')">☕🍯 BitterSweet</button>
-    </section>
+<section class="slide">
+  <h1>What sounds good right now?</h1>
+  <button onclick="choose('taste','sweet')">🍫 Sweet & indulgent</button>
+  <button onclick="choose('taste','bitter')">🍵 Clean & earthy</button>
+  <button onclick="choose('taste','bittersweet')">🍮 Sweet with a kick</button>
+</section>
 
-    <section class ="slide">
-      <h1>Energy Level?</h1>
-      <button onclick ="choose('energy', 'low')" > Low </button>
-      <button onclick ="choose('energy', 'medium')" > Medium </button>
-      <button onclick ="choose('energy', 'high')" > High </button>
-
-    </section>
+<section class="slide">
+  <h1>What do you need from your drink?</h1>
+  <button onclick="choose('energy','low')">😌 Just need to unwind</button>
+  <button onclick="choose('energy','medium')">🚶 Getting through the day</button>
+  <button onclick="choose('energy','high')">🚀 Full send</button>
+</section>
 
     <section class="slide result">
       <h1 id="finalDrink"></h1>
@@ -128,91 +127,88 @@
  
   <script>
   let index = 0;
-  const slides = document.querySelectorAll(".slide");
+const slides = document.querySelectorAll(".slide");
 
-  // to track the scores
-  let scores = {
-    matcha: 0,
-    choco: 0,
-    caramel: 0
-  };
+let scores = { matcha: 0, choco: 0, caramel: 0 };
 
-  function choose(type, value) {
+function choose(type, value) {
 
-    // rules for scoring
-    if (type === "temp") {
-      if (value === "hot") scores.caramel += 2;
-      if (value === "cold") scores.choco += 2;
-    }
-
-    if (type === "vibe") {
-      if (value === "soft") scores.matcha += 2;
-      if (value === "chaotic") scores.choco += 2;
-      if (value === "balanced") scores.caramel += 2;
-    }
-
-    if (type === "taste") {
-      if (value === "sweet") scores.choco += 2;
-      if (value === "bitter") scores.matcha += 2;
-      if(value === "bittersweet") scores.caramel += 2;
-    }
-
-    if (type === "energy"){
-      if(value === "low") scores.matcha += 1;
-      if(value === "medium") scores.caramel += 1;
-      if(value === "high") scores.choco += 1;
-    }
-
-    // move to next slide
-    slides[index].classList.remove("active");
-    index++;
-    slides[index].classList.add("active");
-
-    if (slides[index].classList.contains("result")) {
-      showResult();
-    }
+  if (type === "temp") {
+    if (value === "hot")  scores.caramel += 3;
+    if (value === "cold") scores.choco   += 3;
   }
 
- function showResult() {
-  const resultSlide = document.querySelector(".slide.result");
-
-  let drink = "";
-  let desc = "";
-
-  if (scores.matcha >= scores.choco && scores.matcha >= scores.caramel) {
-    drink = "Matcha 🍵";
-    desc = "Calm, grounded, and effortlessly aesthetic.";
-    imgSrc = "assets/images/matcha.png";
-    resultSlide.style.background = "#7BAE7F"; 
-  }
-  else if (scores.choco >= scores.matcha && scores.choco >= scores.caramel) {
-    drink = "Choco Frappe 🍫";
-    desc = "Fun, bold, and full of energy.";
-    imgSrc = "assets/images/frappee.png";
-    resultSlide.style.background = "#3B2416"; 
-  }
-  else {
-    drink = "Caramel Macchiato 🍮";
-    desc = "Warm, balanced, and comforting.";
-    imgSrc = "assets/images/caramel.png";
-    resultSlide.style.background = "#C68C53"; 
+  if (type === "vibe") {
+    if (value === "soft")     scores.matcha  += 2;
+    if (value === "balanced") scores.caramel += 2;
+    if (value === "chaotic")  scores.choco   += 2;
   }
 
-  document.getElementById("finalDrink").textContent = drink;
-  document.getElementById("drinkDesc").textContent = desc;
-  document.getElementById("drinkImg").src = imgSrc;
+  if (type === "taste") {
+    if (value === "sweet")       { scores.choco   += 3; scores.caramel += 1; }
+    if (value === "bitter")        scores.matcha  += 3;
+    if (value === "bittersweet") { scores.caramel += 3; scores.matcha  += 1; }
+  }
+
+  if (type === "energy") {
+    if (value === "low")    scores.matcha  += 1;
+    if (value === "medium") scores.caramel += 1;
+    if (value === "high")   scores.choco   += 1;
+  }
+
+  slides[index].classList.remove("active");
+  index++;
+  slides[index].classList.add("active");
+
+  if (slides[index].classList.contains("result")) {
+    showResult();
+  }
 }
 
-  function restart() {
-    index = 0;
-    scores = { matcha: 0, choco: 0, caramel: 0 };
-    slides.forEach(s => s.classList.remove("active"));
-    slides[0].classList.add("active");
-  }
+function showResult() {
+  const resultSlide = document.querySelector(".slide.result");
 
-   function goToRecipes(){
-    window.location.href = "recipes.html";
-   }
+  // find the winner
+  const winner = Object.entries(scores).reduce((a, b) => b[1] > a[1] ? b : a)[0];
+
+  const drinks = {
+    matcha: {
+      name: "Matcha 🍵",
+      desc: "Calm, grounded, and effortlessly aesthetic.",
+      img:  "assets/images/matcha.png",
+      bg:   "#7BAE7F"
+    },
+    choco: {
+      name: "Choco Frappe 🍫",
+      desc: "Fun, bold, and full of energy.",
+      img:  "assets/images/frappee.png",
+      bg:   "#3B2416"
+    },
+    caramel: {
+      name: "Caramel Macchiato 🍮",
+      desc: "Warm, balanced, and comforting.",
+      img:  "assets/images/caramel.png",
+      bg:   "#C68C53"
+    }
+  };
+
+  const result = drinks[winner];
+  resultSlide.style.background = result.bg;
+  document.getElementById("finalDrink").textContent = result.name;
+  document.getElementById("drinkDesc").textContent  = result.desc;
+  document.getElementById("drinkImg").src           = result.img;
+}
+
+function restart() {
+  index = 0;
+  scores = { matcha: 0, choco: 0, caramel: 0 };
+  slides.forEach(s => s.classList.remove("active"));
+  slides[0].classList.add("active");
+}
+
+function goToRecipes() {
+  window.location.href = "recipes.html";
+}
 </script>
 </body>
 </html>
